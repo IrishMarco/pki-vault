@@ -1,0 +1,22 @@
+version: '2.2'
+
+#volumes:
+#  vault-data:
+
+services:
+  vault:
+    build: docker
+    ports:
+      - 8200:8200
+    environment:
+      GPG_RECIPIENT: "${MYGPG}"
+      INIT_AUTO_UNSEAL: "${INIT_AUTO_UNSEAL}"
+    volumes:
+      - ./config:/vault/config
+      - ./policies:/vault/policies
+      - ./data:/vault/data
+      - ./logs:/vault/logs
+      - ./certs:/vault/certs
+      - ./scripts:/vault/scripts
+    cap_add:
+      - IPC_LOCK

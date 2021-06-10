@@ -1,0 +1,5 @@
+certs/
+data/
+logs/
+.*.swp
+vault_init.gpg
